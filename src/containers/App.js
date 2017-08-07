@@ -19,10 +19,11 @@ class App extends Component{
     }
     render(){
         const {locations}=this.props;
+        //console.log(locations)
         return(
             <div>
                 <MenuAdd addCity={this.handleAddCity.bind(this)}/>
-                <Cities removeCity={this.handleRemoveCity.bind(this)} locations={locations.locations} params={locations.params}/>
+                <Cities removeCity={this.handleRemoveCity.bind(this)} params={locations.params}/>
             </div>
         )
 

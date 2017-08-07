@@ -5,29 +5,24 @@ import {
 } from "../constants/Constants";
 import * as constants from "redux-persist/constants"
 const initialState = {
-    locations: [],
-    params:[]
+    params: []
 };
 export default function locations(state = initialState, action) {
     switch (action.type) {
         case GET_WEATHER_SUCCESS:
-                state.locations.push(
-                    action.payload.city
-                );
-                state.params.push(
-                    {
-                        temp: Math.round(action.payload.result.main.temp - 273),
-                        sky: action.payload.result.weather[0].description
-                    }
-                );
-            return {...state};
+            return {
+                ...state,
+                params:[...state.params, {
+                    city: action.payload.city,
+                    temp: Math.round(action.payload.result.main.temp - 273),
+                    sky: action.payload.result.weather[0].description
+                }]
+            };
         case REMOVE_CITY:
-            state.params.splice(state.locations.indexOf(action.payload.city),1);
-            state.locations.splice(state.locations.indexOf(action.payload.city),1);
-            return{...state};
+            return {...state,
+            params: state.params.filter(element => element.city!==action.payload.city)};
         case constants.REHYDRATE:
-            state = action.payload.locations;
-            return{...state}
+         return (action.payload.locations? action.payload.locations: state);
         default:
             return state;
     }
