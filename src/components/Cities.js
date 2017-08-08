@@ -10,7 +10,7 @@ export default function Cities(props){
         return(
             <div className="cities">
                 {params.map(city =>{
-                    return <City removeCity={removeCity}  name={city.city} key={i++} temp={city.temp} sky={city.sky}/>
+                    return <City  removeCity={removeCity}  name={city.city} key={i++} temp={city.temp} sky={city.sky}/>
                 })}
             </div>
         )

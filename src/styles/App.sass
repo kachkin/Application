@@ -1,12 +1,18 @@
 @import "colors/colors"
+@import "images/images"
 
 body
-  background-color: $background-color
+  background: url($background-image) fixed
+  background-size: 100%
   color: $text-color
-  float: left
 
 .btn
-  background-color: $button-color
-  border-radius: 10px
-  border: none
+  background-color: $button-color-normal
+  border-radius: 5px
   outline: none
+
+.btn-add
+  padding: 5px
+
+.btn:hover
+  background-color: $button-color-hover

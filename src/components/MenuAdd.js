@@ -1,19 +1,27 @@
 import React, {Component, PropTypes} from "react";
-
+import {Form, FormControl, FormGroup, Col, Button} from "react-bootstrap"
 import "../styles/MenuAdd.sass"
 
-export default class MenuAdd extends Component{
-    render(){
-        const {addCity} = this.props;
+export default function MenuAdd(props) {
+        const {addCity} = props;
         return(
-            <div className="menu-add">
-                <form onSubmit={addCity}>
-                    <input id="add-city" autoComplete="off" type="text" placeholder="Введите город"/>
-                    <button className="btn" type="submit"> Добавить </button>
-                </form>
-            </div>
+        <Form onSubmit={addCity}>
+            <FormGroup controlId="add-city">
+                <Col smOffset={3} sm={5}>
+                    <FormControl type="text" placeholder="Введите город" />
+                </Col>
+
+            </FormGroup>
+            <FormGroup>
+                <Col sm={4}>
+                    <Button type="submit">
+                        Найти
+                    </Button>
+                </Col>
+            </FormGroup>
+
+        </Form>
         )
-    }
 }
 
 MenuAdd.propTypes={
