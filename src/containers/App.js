@@ -7,6 +7,11 @@ import MenuAdd from "../components/MenuAdd";
 import "../styles/App.sass"
 
 class App extends Component{
+    componentWillUpdate(nextProps){
+        if((JSON.stringify(nextProps.locations)!==JSON.stringify(this.props.locations))&&(this.props.locations.params.length===0)) {
+            this.props.actions.changeWeather(nextProps.locations.params);
+        }
+    }
     handleAddCity(e){
         e.preventDefault();
         let city = e.target.elements["add-city"].value;
@@ -19,7 +24,6 @@ class App extends Component{
     }
     render(){
         const {locations}=this.props;
-        console.log(this.props);
         return(
             <div>
                 <MenuAdd addCity={(e)=>this.handleAddCity(e)}/>

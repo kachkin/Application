@@ -1,7 +1,7 @@
 import {
     GET_WEATHER_SUCCESS,
     REMOVE_CITY,
-    CHECK_LOCAL_STORAGE
+    CHANGE_WEATHER
 } from "../constants/Constants";
 import * as constants from "redux-persist/constants"
 const initialState = {
@@ -9,6 +9,9 @@ const initialState = {
 };
 export default function locations(state = initialState, action) {
     switch (action.type) {
+        case CHANGE_WEATHER:
+            console.log(action.payload);
+            return{...state};
         case GET_WEATHER_SUCCESS:
             return {
                 ...state,
