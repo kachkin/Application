@@ -1,5 +1,5 @@
 var webpack = require('webpack');
-var NpmInstallPlugin = require("npm-install-webpack-plugin");
+
 
 module.exports = {
     entry: "./src/index.js",
